@@ -1,0 +1,18 @@
+/* dot over the bell icon */
+.size-custom {
+  background-color: #4388e0;
+  width: 30%;
+  height: 30%;
+  left: 8%;
+
+  box-shadow: 0px 0px 0px 3px #212529;
+}
+/* ul navbar centered padding */
+.p-custom {
+  padding-top: 2%;
+}
+
+/* shadow cards */
+.shadow-custom {
+  box-shadow: 0px 0px 0px 3px #ffffff;
+}

@@ -1,0 +1,24 @@
+#audio-player {
+  /* background-color: #282828; */
+}
+
+#artist-photo {
+  height: 1.8em;
+}
+
+.spotify-green {
+  color: #006401;
+}
+
+.spotify-green-background {
+  background-color: #006401;
+}
+
+.album-gradient {
+  background: #070707;
+  background: linear-gradient(180deg, #816b0d 0%, #121212 55%);
+}
+
+/* .blur-effect {
+  backdrop-filter: blur(25%);
+} */

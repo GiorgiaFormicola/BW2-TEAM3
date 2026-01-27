@@ -1,13 +1,13 @@
 #artist-photo {
-  height: 1.8em;
+  height: 2em;
 }
 
 .spotify-green {
-  color: #006401;
+  color: #1ed760;
 }
 
 .spotify-green-background {
-  background-color: #006401;
+  background-color: #1ed760;
 }
 
 .album-gradient {
@@ -18,3 +18,49 @@
 /* .blur-effect {
   backdrop-filter: blur(25%);
 } */
+
+#audio-menu i {
+  font-size: 1.8em;
+}
+
+#songs-row p {
+  font-size: 1.5em;
+}
+
+/* DESKTOP VERSION */
+@media screen and (min-width: 992px) {
+  #play-button {
+    color: black;
+  }
+
+  #artist-photo {
+    height: 1.2em;
+  }
+
+  .bi-three-dots-vertical {
+    transform: rotate(90deg);
+  }
+
+  h1 {
+    font-size: 4.5em;
+  }
+
+  #album-info h5 {
+    font-size: 1em;
+  }
+
+  #audio-menu i {
+    font-size: 1.5em;
+  }
+
+  #audio-menu svg {
+    width: 2em;
+    height: 2em;
+  }
+
+  #songs-row h4,
+  #songs-row p {
+    font-size: 1em;
+    margin-bottom: 0;
+  }
+}

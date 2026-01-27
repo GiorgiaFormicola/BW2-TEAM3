@@ -1,4 +1,4 @@
-#artist-photo {
+#album-artist-photo {
   height: 2em;
 }
 
@@ -23,7 +23,7 @@
   font-size: 1.8em;
 }
 
-#songs-row p {
+#tracks-container p {
   font-size: 1.5em;
 }
 
@@ -33,8 +33,8 @@
     color: black;
   }
 
-  #artist-photo {
-    height: 1.2em;
+  #album-artist-photo {
+    height: 1.5em;
   }
 
   .bi-three-dots-vertical {
@@ -58,8 +58,8 @@
     height: 2em;
   }
 
-  #songs-row h4,
-  #songs-row p {
+  #tracks-container h4,
+  #tracks-container p {
     font-size: 1em;
     margin-bottom: 0;
   }

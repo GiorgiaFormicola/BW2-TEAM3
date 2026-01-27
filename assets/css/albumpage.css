@@ -1,4 +1,4 @@
-#album-artist-photo {
+#album-artist-picture {
   height: 2em;
 }
 
@@ -33,16 +33,12 @@
     color: black;
   }
 
-  #album-artist-photo {
+  #album-artist-picture {
     height: 1.5em;
   }
 
   .bi-three-dots-vertical {
     transform: rotate(90deg);
-  }
-
-  h1 {
-    font-size: 4.5em;
   }
 
   #album-info h5 {

@@ -1,6 +1,7 @@
-console.log("Hello world!");
-const URL = "https://striveschool-api.herokuapp.com/api/deezer/album/";
-const albumID = "75621062";
+const apiURL = "https://striveschool-api.herokuapp.com/api/deezer/album/";
+const windowURL = location.search;
+const allTheParameters = new URLSearchParams(windowURL);
+const albumID = allTheParameters.get("albumID");
 
 // functions to display DURATION
 const displayDurationLongVersion = function (duration) {
@@ -34,7 +35,7 @@ const displayDurationShortVersion = function (duration) {
 const albumCover = document.getElementById("album-cover");
 const albumTitle = document.getElementById("album-title");
 const albumArtistPicture = document.getElementById("album-artist-picture");
-const albumArtist = document.getElementById("album-artist");
+const albumArtistLink = document.getElementById("album-artist-link");
 const albumReleaseMobile = document.getElementById("album-release-mobile");
 const albumReleaseDesktop = document.getElementById("album-release-desktop");
 const albumTracks = document.getElementById("album-tracks");
@@ -44,15 +45,28 @@ const showAlbumInfos = function (element) {
   albumCover.src = element.cover_xl;
   albumTitle.innerText = element.title;
   albumArtistPicture.src = element.artist.picture_small;
-  albumArtist.innerText = element.artist.name;
+  albumArtistLink.innerText = element.artist.name;
+  albumArtistLink.href = `./artistpage.html?artistID=${element.artist.id}`;
   albumReleaseMobile.innerText = element.release_date.slice(0, 4);
   albumReleaseDesktop.innerText = element.release_date.slice(0, 4);
   albumTracks.innerText = element.tracks.data.length;
   albumDuration.innerText = displayDurationLongVersion(element.duration);
 };
 
-// function to create a TRACK CARD
+// function to play TRACK
+const playerTrackCoverMobile = document.getElementById("playing-track-cover-mobile");
+const playerTrackCoverDesktop = document.getElementById("playing-track-cover-desktop");
+const playerTrackTitleMobile = document.getElementById("playing-track-title-mobile");
+const playerTrackTitleDesktop = document.getElementById("playing-track-title-desktop");
+const playerTrackArtist = document.getElementById("playing-track-artist");
 
+const playTrack = function (element) {
+  console.log("CLICCATO");
+  console.log(element);
+  // playerTrackCoverMobile.src = element.cover_xl;
+};
+
+// function to show ALBUM TRACKS
 const tracksContainer = document.getElementById("tracks-container");
 const showAlbumTracks = function (element) {
   const albumTracksArray = element.tracks.data;
@@ -62,8 +76,8 @@ const showAlbumTracks = function (element) {
           <div class="d-lg-flex align-items-center gap-lg-3">
             <h6 class="ps-1 my-0 d-none d-lg-block opacity-50 text-end" style="width: 1.2em">${i + 1}</h6>
             <div>
-              <h4 class="fw-semibold mb-1">${track.title_short}}</h4>
-              <p class="text-muted">${track.artist.name}</p>
+              <h4 class="fw-semibold mb-1">${track.title_short}</h4>
+              <a href="./artistpage.html?artistID=${track.artist.id}" class="link-light link-opacity-50 link-underline-opacity-0">${track.artist.name}</a>
             </div>
           </div>
           <i class="bi bi-three-dots-vertical fs-1 opacity-50 d-lg-none"></i>
@@ -79,9 +93,8 @@ const showAlbumTracks = function (element) {
 };
 
 // function to get ALBUM INFOS
-
 const getAlbumInfos = function (albumID) {
-  fetch(URL + albumID)
+  fetch(apiURL + albumID)
     .then((response) => {
       if (response.ok) {
         return response.json();

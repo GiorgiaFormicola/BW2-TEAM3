@@ -1,0 +1,62 @@
+#album-artist-picture {
+  height: 2em;
+}
+
+.spotify-green {
+  color: #1ed760;
+}
+
+.spotify-green-background {
+  background-color: #1ed760;
+}
+
+.album-gradient {
+  background: #070707;
+  background: linear-gradient(180deg, #816b0d 0%, #121212 55%);
+}
+
+/* .blur-effect {
+  backdrop-filter: blur(25%);
+} */
+
+#audio-menu i {
+  font-size: 1.8em;
+}
+
+#tracks-container p {
+  font-size: 1.5em;
+}
+
+/* DESKTOP VERSION */
+@media screen and (min-width: 992px) {
+  #play-button {
+    color: black;
+  }
+
+  #album-artist-picture {
+    height: 1.5em;
+  }
+
+  .bi-three-dots-vertical {
+    transform: rotate(90deg);
+  }
+
+  #album-info h5 {
+    font-size: 1em;
+  }
+
+  #audio-menu i {
+    font-size: 1.5em;
+  }
+
+  #audio-menu svg {
+    width: 2em;
+    height: 2em;
+  }
+
+  #tracks-container h4,
+  #tracks-container p {
+    font-size: 1em;
+    margin-bottom: 0;
+  }
+}

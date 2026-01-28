@@ -1,0 +1,43 @@
+/* dot over the bell icon */
+.size-custom {
+  background-color: #4388e0;
+  width: 30%;
+  height: 30%;
+  left: 8%;
+  bottom: 90%;
+  box-shadow: 0px 0px 0px 3px #212529;
+}
+/* ul navbar centered padding */
+.p-custom {
+  padding-top: 2%;
+}
+
+/* shadow cards */
+.shadow-custom {
+  box-shadow: 0px 0px 5px 0.5px #dddddd;
+}
+
+/* fs p for playlist */
+
+.fs-custom {
+  font-size: 0.8rem;
+}
+
+/* spotify green */
+.green {
+  color: #20d65e;
+}
+.bg-btn-custom {
+  background-color: #20d65e !important;
+}
+.border-btn-custom {
+  border: 1px solid #ffffffbb;
+}
+.cols-custom {
+  width: 49%;
+}
+@media screen and (min-width: 1200px) {
+  .cols-custom {
+    width: 32%;
+  }
+}

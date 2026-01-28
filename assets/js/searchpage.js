@@ -20,6 +20,7 @@ searchInput.addEventListener("keyup", () => {
 async function fetchTracks(query) {
   const res = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`);
   const data = await res.json();
+  console.log(data);
   return data.data;
 }
 async function handleSearch(query) {
@@ -40,7 +41,10 @@ function showSearchResults(tracks) {
 
   const fragment = document.createDocumentFragment();
 
-  tracks.slice(0, 12).forEach((track) => {
+  tracks.slice(0, 24).forEach((track) => {
+    console.log("ID TRACK:", track.id);
+    console.log("ID ARTISTA:", track.artist.id);
+    console.log("ID ALBUM:", track.album.id);
     fragment.appendChild(createTrackCard(track));
   });
 

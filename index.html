@@ -15,11 +15,11 @@
     <link rel="stylesheet" href="assets/css/homepage.css" />
   </head>
   <body data-bs-theme="dark">
-    <div class="row">
+    <div class="row g-0">
       <div class="col-3 bg-black d-none d-lg-block">ciao</div>
       <div class="col-12 col-lg-7">
         <!-- start first lg section -->
-        <section class="conatiner d-none d-lg-block">
+        <section class="conatiner d-none d-lg-block mx-3">
           <!-- START FRECCIA NAVIGAZIONE MOBILE -->
           <i class="bi bi-arrow-left fs-1 sticky-top pt-5 d-lg-none"></i>
           <!-- END FRECCIA NAVIGAZIONE MOBILE -->
@@ -43,7 +43,7 @@
           <!-- END FRECCE + USER DESKTOP -->
         </section>
         <section class="container mt-3 bg-black p-3 d-none d-lg-block">
-          <div class="row g-0">
+          <div class="row">
             <div class="col-3">
               <img src="assets/imgs/main/image-11.jpg" alt="" class="img-fluid" />
             </div>
@@ -56,14 +56,18 @@
                   <p class="mb-0 fs-custom bg-body-secondary p-1 rounded-pill opacity-75">NASCONDI ANNUNCI</p>
                 </div>
               </div>
-              <h1 class="display-4 fw-semibold">VIOLA(feat.Salmo)</h1>
-              <p class="mb-0">cazzate cazzate</p>
-              <p class="mb-0">cazzate cazzate altree altre</p>
-              <button class="rounded-pill bg-transparent border-0 bg-btn-custom text-black px-3 py-1 my-2">save</button>
-              <button class="rounded-pill bg-transparent border-btn-custom px-3 py-1">altro</button>
-              <button class="rounded-pill bg-transparent border-0 opacity-75">
-                <i class="bi bi-three-dots"></i>
-              </button>
+              <div class="row">
+                <div class="col-12"><h1 class="display-4 fw-semibold">VIOLA(feat.Salmo)</h1></div>
+                <div class="col-12"><p class="mb-0">cazzate cazzate</p></div>
+                <div class="col-12"><p class="mb-0">cazzate cazzate altree altre</p></div>
+                <div class="col-12">
+                  <button class="rounded-pill bg-transparent border-0 bg-btn-custom text-black px-3 py-1 my-2">save</button>
+                  <button class="rounded-pill bg-transparent border-btn-custom px-3 py-1">altro</button>
+                  <button class="rounded-pill bg-transparent border-0 opacity-75">
+                    <i class="bi bi-three-dots"></i>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -94,7 +98,7 @@
             <p class="ms-3">Podcast e show</p>
           </section>
           <section class="container d-flex justify-content-center">
-            <div class="row w-100 g-1 row-cols-2">
+            <div class="row w-100 g-1 row-cols-2 row-cols-lg-3">
               <div class="col">
                 <!-- start  slide -->
                 <div class="overflow-hidden rounded-2 mb-1 bg-body-secondary">
@@ -264,7 +268,7 @@
               </div>
             </div>
           </section>
-          <section class="container d-none d-lg-block my-3">
+          <section class="container my-3">
             <div class="row g-0">
               <div class="col">
                 <p class="mb-0 fw-bold fs-4">Altro di ció che ti piace</p>
@@ -276,12 +280,12 @@
           </section>
 
           <!-- start section cards that u can like -->
-          <section class="container d-none d-lg-block">
-            <div id="cards" class="row"></div>
+          <section class="container">
+            <div id="cards" class="row g-5 g-lg-2"></div>
           </section>
           <!-- end section cards that u can like -->
 
-          <section class="container d-none d-lg-block my-3">
+          <section class="container my-5">
             <p class="mb-0 fw-bold fs-4">Le tue preferite</p>
           </section>
           <!-- start card -->
@@ -296,26 +300,26 @@
                           <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-11.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-12.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-13.jpg" alt="" class="img-fluid" />
                         </div>
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="d-flex flex-column h-100">
                         <p class="m-0 fs-custom opacity-75">Playlist</p>
-                        <p class="fw-semibold fs-5 text-light">study and work space</p>
+                        <p class="fw-semibold fs-5 text-light">study</p>
                       </div>
                     </div>
                   </div>
                   <div class="row mt-4">
                     <div class="col-6 d-flex align-items-center gap-4">
-                      <i class="fas fa-heart green fs-2"></i><i class="bi bi-three-dots-vertical fs-3"></i>
+                      <i class="fas fa-heart green fs-2"></i><i class="bi bi-three-dots-vertical fs-3 fs-lg-5"></i>
                     </div>
                     <div class="col-6 d-flex align-items-center gap-3 justify-content-end">
                       <p class="mb-0 opacity-75 fs-custom">16 brani</p>
@@ -332,23 +336,23 @@
                     <div class="col-6">
                       <div class="row g-0 shadow-custom">
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-14.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-15.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-16.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-17.jpg" alt="" class="img-fluid" />
                         </div>
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="d-flex flex-column h-100">
                         <p class="m-0 fs-custom opacity-75">Playlist</p>
-                        <p class="fw-semibold fs-5 text-light">study and work space</p>
+                        <p class="fw-semibold fs-5 text-light">Jazz</p>
                       </div>
                     </div>
                   </div>
@@ -371,23 +375,23 @@
                     <div class="col-6">
                       <div class="row g-0 shadow-custom">
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-1.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-4.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-7.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-9.jpg" alt="" class="img-fluid" />
                         </div>
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="d-flex flex-column h-100">
                         <p class="m-0 fs-custom opacity-75">Playlist</p>
-                        <p class="fw-semibold fs-5 text-light">study and work space</p>
+                        <p class="fw-semibold fs-5 text-light">Rock</p>
                       </div>
                     </div>
                   </div>
@@ -410,23 +414,23 @@
                     <div class="col-6">
                       <div class="row g-0 shadow-custom">
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-13.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-19.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-2.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-3.jpg" alt="" class="img-fluid" />
                         </div>
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="d-flex flex-column h-100">
                         <p class="m-0 fs-custom opacity-75">Playlist</p>
-                        <p class="fw-semibold fs-5 text-light">study and work space</p>
+                        <p class="fw-semibold fs-5 text-light">Run</p>
                       </div>
                     </div>
                   </div>
@@ -449,23 +453,23 @@
                     <div class="col-6">
                       <div class="row g-0 shadow-custom">
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-2.jpg" alt="" class="img-fluid" />
+                        </div>
+                        <div class="col-6">
+                          <img src="assets/imgs/main/image-6.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
                           <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
-                        </div>
-                        <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-11.jpg" alt="" class="img-fluid" />
                         </div>
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="d-flex flex-column h-100">
                         <p class="m-0 fs-custom opacity-75">Playlist</p>
-                        <p class="fw-semibold fs-5 text-light">study and work space</p>
+                        <p class="fw-semibold fs-5 text-light">Classic</p>
                       </div>
                     </div>
                   </div>
@@ -488,23 +492,23 @@
                     <div class="col-6">
                       <div class="row g-0 shadow-custom">
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-4.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-8.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-12.jpg" alt="" class="img-fluid" />
                         </div>
                         <div class="col-6">
-                          <img src="assets/imgs/main/image-10.jpg" alt="" class="img-fluid" />
+                          <img src="assets/imgs/main/image-19.jpg" alt="" class="img-fluid" />
                         </div>
                       </div>
                     </div>
                     <div class="col-6">
                       <div class="d-flex flex-column h-100">
                         <p class="m-0 fs-custom opacity-75">Playlist</p>
-                        <p class="fw-semibold fs-5 text-light">study and work space</p>
+                        <p class="fw-semibold fs-5 text-light">Blues</p>
                       </div>
                     </div>
                   </div>

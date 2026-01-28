@@ -36,6 +36,9 @@
 .cols-custom {
   width: 49%;
 }
+.pointer {
+  cursor: pointer;
+}
 @media screen and (min-width: 1200px) {
   .cols-custom {
     width: 32%;

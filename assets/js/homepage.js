@@ -14,18 +14,18 @@ const playTrack = function (element) {
   playerTrackArtist.innerText = `${element.artist.name}`;
 };
 
-let artist = ["Queen", "coldplay", "geolier", "mariomerola", "tonypitony"];
+let artist = ["Queen", "coldplay", "geolier", "mariomerola", "tonypitony", "radiohead"];
 let random = [];
 let arrayTracks = [];
 let counter = 0;
 
 const randomNumber = () => {
-  const number = Math.floor(Math.random() * 5);
+  const number = Math.floor(Math.random() * 6);
   return number;
 };
 
 const numbers = () => {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     let number = randomNumber();
     while (random.includes(number)) {
       number = randomNumber();
@@ -35,7 +35,7 @@ const numbers = () => {
 };
 numbers();
 const getArtist = () => {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     getSlides(artist[random[i]]);
   }
 };
@@ -49,11 +49,11 @@ const getSlides = (artist) => {
     .then((data) => {
       const num = randomNumber();
       cards.innerHTML += `
-                <div class="col-2 d-flex">
+                <div class="col-6  col-lg-2 d-flex justify-content-center">
                   <div class="card border-0 bg-body-secondary p-2">
                      <a href="./albumpage.html?albumID=${data.data[num].album.id}"><img src="${data.data[num].album.cover_medium}" class="card-img-top rounded-2" alt="..." /></a>
   
-                   <p class="card-title mb-0 my-2 fw-semibold track" data-counter="${counter}">${data.data[num].title_short}</p>
+                   <p class="card-title mb-0 my-2 fw-semibold track pointer" data-counter="${counter}">${data.data[num].title_short}</p>
                     <a href="./artistpage.html?artistID=${data.data[num].artist.id}" class="link-light link-opacity-50 link-underline-opacity-0"><p class="card-text pb-1 fs-custom ">${data.data[num].artist.name}</p></a>
                   </div>
                 </div>  

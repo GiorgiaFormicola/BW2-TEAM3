@@ -61,9 +61,11 @@ const playerTrackTitleDesktop = document.getElementById("playing-track-title-des
 const playerTrackArtist = document.getElementById("playing-track-artist");
 
 const playTrack = function (element) {
-  console.log("CLICCATO");
-  console.log(element);
-  // playerTrackCoverMobile.src = element.cover_xl;
+  playerTrackCoverMobile.src = element.album.cover_small;
+  playerTrackCoverDesktop.src = element.album.cover_small;
+  playerTrackTitleMobile.innerText = `${element.title}`;
+  playerTrackTitleDesktop.innerText = `${element.title}`;
+  playerTrackArtist.innerText = `${element.artist.name}`;
 };
 
 // function to show ALBUM TRACKS
@@ -72,7 +74,7 @@ const showAlbumTracks = function (element) {
   const albumTracksArray = element.tracks.data;
   albumTracksArray.forEach((track, i) => {
     tracksContainer.innerHTML += `
-    <div class="col col-12 col-lg-7 d-flex align-items-center justify-content-between justify-content-lg-start gap-lg-3">
+    <div id="track${i + 1}" class="track col col-12 col-lg-7 d-flex align-items-center justify-content-between justify-content-lg-start gap-lg-3">
           <div class="d-lg-flex align-items-center gap-lg-3">
             <h6 class="ps-1 my-0 d-none d-lg-block opacity-50 text-end" style="width: 1.2em">${i + 1}</h6>
             <div>
@@ -90,11 +92,16 @@ const showAlbumTracks = function (element) {
         </div>
     `;
   });
+
+  const allTracksOnPage = document.querySelectorAll(".track");
+  allTracksOnPage.forEach((trackOnPage, i) => {
+    trackOnPage.addEventListener("click", () => playTrack(albumTracksArray[i]));
+  });
 };
 
 // function to get ALBUM INFOS
-const getAlbumInfos = function (albumID) {
-  fetch(apiURL + albumID)
+const getAlbumInfos = function (ID) {
+  fetch(apiURL + ID)
     .then((response) => {
       if (response.ok) {
         return response.json();

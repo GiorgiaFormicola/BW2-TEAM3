@@ -56,17 +56,30 @@ function createTrackCard(track) {
 
   col.innerHTML = `
     <div class="bg-dark rounded p-2 h-100">
-      <img src="${track.album.cover_medium}"
-           class="img-fluid rounded mb-2"
-           alt="${track.title}">
+
+      
+      <a href="./albumpage.html?albumID=${track.album.id}">
+        <img
+          src="${track.album.cover_medium}"
+          class="img-fluid rounded mb-2"
+          alt="${track.title}"
+        />
+      </a>
+
+      
       <div class="fw-semibold small text-truncate">
         ${track.title}
       </div>
-      <div class="small opacity-75 text-truncate">
+
+     
+      <a
+        href="./artistpage.html?artistID=${track.artist.id}"
+        class="small opacity-75 text-decoration-none text-white text-truncate d-block"
+      >
         ${track.artist.name}
-      </div>
+      </a>
+
     </div>
   `;
-
   return col;
 }

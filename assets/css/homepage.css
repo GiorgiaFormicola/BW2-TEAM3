@@ -39,8 +39,27 @@
 .pointer {
   cursor: pointer;
 }
+.bg-custom-gradient {
+  background: #000000;
+  background: linear-gradient(27deg, rgba(0, 0, 0, 1) 0%, rgba(71, 71, 71, 1) 100%);
+}
 @media screen and (min-width: 1200px) {
   .cols-custom {
     width: 32%;
+  }
+}
+
+#test {
+  display: inline-flex;
+  width: max-content;
+  animation: move 4s linear infinite;
+}
+#test span {
+  padding-right: 3rem;
+}
+
+@keyframes move {
+  to {
+    transform: translateX(-54%);
   }
 }

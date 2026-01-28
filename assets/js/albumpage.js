@@ -85,7 +85,7 @@ const showAlbumTracks = function (element) {
           <i class="bi bi-three-dots-vertical fs-1 opacity-50 d-lg-none"></i>
         </div>
         <div class="col col-2 text-end d-none d-lg-block">
-          <p class="my-0 opacity-50">694.578</p>
+          <p class="my-0 opacity-50"># ${track.rank}</p>
         </div>
         <div class="col col-2 text-end offset-lg-1 d-none d-lg-block pe-5">
           <p class="my-0 opacity-50">${displayDurationShortVersion(track.duration)}</p>
@@ -119,4 +119,4 @@ const getAlbumInfos = function (ID) {
     });
 };
 
-getAlbumInfos("75621062");
+getAlbumInfos(albumID);

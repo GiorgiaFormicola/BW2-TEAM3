@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spotify clone - Searchpage</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="assets/css/searchpage.css" />
+  </head>
+  <body data-bs-theme="dark" class="bg-black text-white">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 d-none d-lg-flex flex-column bg-black p-3 gap-3 vh-100 position-fixed">
+          <i class="bi bi-three-dots fs-4"></i>
+
+          <nav class="nav flex-column gap-2">
+            <a href="./index.html" class="nav-link text-white fw-semibold"> <i class="bi bi-house-door me-2"></i> Home </a>
+            <a class="nav-link text-white fw-semibold"> <i class="bi bi-search me-2"></i> Cerca </a>
+            <a class="nav-link text-white fw-semibold"> <i class="bi bi-collection me-2"></i> La tua libreria </a>
+          </nav>
+
+          <hr class="border-secondary" />
+
+          <nav class="nav flex-column gap-2">
+            <a class="nav-link text-white"> <i class="bi bi-plus-square me-2"></i> Crea playlist </a>
+            <a class="nav-link text-white"> <i class="bi bi-heart-fill me-2"></i> Brani che ti piacciono </a>
+            <a class="nav-link text-white"> <i class="bi bi-broadcast me-2"></i> I tuoi episodi </a>
+          </nav>
+
+          <!-- spazio vuoto nero -->
+          <div class="flex-grow-1"></div>
+        </div>
+
+        <main class="col-12 col-lg-9 offset-lg-2">
+          <div class="container pt-4 pb-4">
+            <h3 class="fw-bold mb-4">Cerca</h3>
+
+            <!-- BARRA DI RICERCA -->
+            <div class="input-group mb-4 py-3">
+              <span class="input-group-text bg-secondary bg-opacity-25 border-0">
+                <i class="bi bi-search text-white"></i>
+              </span>
+              <input id="searchInput" type="text" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-3" placeholder="Cosa vuoi ascoltare?" />
+            </div>
+
+            <h5 class="fw-bold mb-4 text-center">Sfoglia tutto</h5>
+
+            <div class="row g-3 mt-4">
+              <!-- CARD -->
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: #e13300; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Podcast</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-2.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: #1e3264; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Create per te</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-42.png" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: #e8125c; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Nuove uscite</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-26.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: #148a08; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Pop</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-47.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: #bc5900; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Hip Hop</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-49.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: #dc148c; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">
+                    Dance / <br />
+                    Elettronica
+                  </div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-4.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: #e61e32; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Latina</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-5.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: #8d67ab; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Classifiche</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-14.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: red; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Gaming</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-52.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: blue; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Country</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-39.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: gray; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Rap</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-38.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="rounded p-2 position-relative overflow-hidden card" style="background-color: red; height: 115px; min-height: 135px">
+                  <div class="fw-bold small">Gym</div>
+
+                  <div class="position-absolute end-0" style="top: 55%; transform: translateY(-60%) rotate(22deg) translateX(18px)">
+                    <img src="./assets/imgs/search/image-8.jpg" class="rounded-3" style="width: 80px" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="searchResults" class="row g-3"></div>
+        </main>
+        <!--Barra DX-->
+
+        <div class="col-1 d-none d-lg-flex flex-column bg-black p-3 gap-3 vh-100 position-fixed end-0">
+          <div class="fw-bold small opacity-75 mb-2">Partecipanti</div>
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px">GF</div>
+            <span class="small">Giorgia Formicola</span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px">FL</div>
+            <span class="small">Francesco Loffredo</span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px">FD</div>
+            <span class="small">Francesco Dattola</span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px">FA</div>
+            <span class="small">Francesco Alves</span>
+          </div>
+
+          <div class="flex-grow-1"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <div id="nav-mobile" class="position-fixed bottom-0 start-0 w-100">
+      <!-- AUDIO-PLAYER START -->
+      <div id="audio-player" class="d-flex align-items-center gap-2 mx-3 p-3 rounded-3 bg-dark">
+        <img />
+        <h5 class="my-0 text-light text-nowrap overflow-hidden py-3 flex-grow-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+        <div class="d-flex gap-4 align-items-center">
+          <i class="bi bi-speaker opacity-50 fs-1"></i>
+          <i class="bi bi-heart fs-1 text-light"></i>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
+          </svg>
+        </div>
+      </div>
+      <!-- AUDIO-PLAYER ENDS -->
+      <!-- NAV-BAR STARTS -->
+      <nav id="nav-bar" class="py-2 bg-black bg-opacity-75">
+        <ul class="nav text-center d-flex justify-content-center gap-5">
+          <li class="nav-item">
+            <a class="nav-link link-light active" aria-current="page" href="#">
+              <i class="bi bi-house-door-fill fs-1"></i>
+              <p>Home</p></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light link-opacity-50" href="">
+              <i class="bi bi-search fs-1"></i>
+              <p>Cerca</p></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light link-opacity-50" href="">
+              <i class="bi bi-collection fs-1"></i>
+
+              <p>La tua libreria</p></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <!-- NAV-BAR ENDS -->
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/searchpage.js"></script>
+  </body>
+</html>

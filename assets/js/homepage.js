@@ -1,7 +1,23 @@
 const cards = document.querySelector("#cards");
+// function to play TRACK
+const playerTrackCoverMobile = document.getElementById("playing-track-cover-mobile");
+const playerTrackCoverDesktop = document.getElementById("playing-track-cover-desktop");
+const playerTrackTitleMobile = document.getElementById("playing-track-title-mobile");
+const playerTrackTitleDesktop = document.getElementById("playing-track-title-desktop");
+const playerTrackArtist = document.getElementById("playing-track-artist");
+
+const playTrack = function (element) {
+  playerTrackCoverMobile.src = element.album.cover_small;
+  playerTrackCoverDesktop.src = element.album.cover_small;
+  playerTrackTitleMobile.innerText = ` ${element.title}`;
+  playerTrackTitleDesktop.innerText = `${element.title}`;
+  playerTrackArtist.innerText = `${element.artist.name}`;
+};
 
 let artist = ["Queen", "coldplay", "geolier", "mariomerola", "tonypitony"];
 let random = [];
+let arrayTracks = [];
+let counter = 0;
 
 const randomNumber = () => {
   const number = Math.floor(Math.random() * 5);
@@ -20,9 +36,7 @@ const numbers = () => {
 numbers();
 const getArtist = () => {
   for (let i = 0; i < 5; i++) {
-    console.log(artist[i]);
     getSlides(artist[random[i]]);
-    console.log(random);
   }
 };
 const getSlides = (artist) => {
@@ -33,18 +47,27 @@ const getSlides = (artist) => {
       } else throw new Error("errore nel caricamento dati");
     })
     .then((data) => {
-      console.log(data.data[0]);
+      const num = randomNumber();
       cards.innerHTML += `
-                <div class="col d-flex">
+                <div class="col-2 d-flex">
                   <div class="card border-0 bg-body-secondary p-2">
-                     <a href="./albumpage.html?albumID=${data.data[randomNumber()].album.id}"><img src="${data.data[randomNumber()].album.cover_medium}" class="card-img-top rounded-2" alt="..." /></a>
+                     <a href="./albumpage.html?albumID=${data.data[num].album.id}"><img src="${data.data[num].album.cover_medium}" class="card-img-top rounded-2" alt="..." /></a>
   
-                   <p class="card-title mb-0 my-2 fw-semibold">${data.data[randomNumber()].title_short}</p>
-                    <a href="./artistpage.html?artistID=${data.data[randomNumber()].artist.id}" class="link-light link-opacity-50 link-underline-opacity-0"><p class="card-text pb-1 fs-custom ">${data.data[randomNumber()].artist.name}</p></a>
+                   <p class="card-title mb-0 my-2 fw-semibold track" data-counter="${counter}">${data.data[num].title_short}</p>
+                    <a href="./artistpage.html?artistID=${data.data[num].artist.id}" class="link-light link-opacity-50 link-underline-opacity-0"><p class="card-text pb-1 fs-custom ">${data.data[num].artist.name}</p></a>
                   </div>
                 </div>  
         `;
+      arrayTracks.push(data.data[num]);
+      const allTracksOnPage = document.querySelectorAll(".track");
+      allTracksOnPage.forEach((trackOnPage, i) => {
+        trackOnPage.addEventListener("click", () => {
+          playTrack(arrayTracks[trackOnPage.dataset.counter]);
+        });
+      });
+      counter++;
     })
+
     .catch((err) => {
       console.log("errore", err);
     });

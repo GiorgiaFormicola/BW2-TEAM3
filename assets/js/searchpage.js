@@ -67,10 +67,13 @@ function createTrackCard(track) {
       </a>
 
       
-      <div class="fw-semibold small text-truncate">
+      <div
+        class="fw-semibold small text-truncate track-title"
+        role="button"
+        style="cursor: pointer"
+      >
         ${track.title}
       </div>
-
      
       <a
         href="./artistpage.html?artistID=${track.artist.id}"
@@ -81,5 +84,20 @@ function createTrackCard(track) {
 
     </div>
   `;
+  col.querySelector(".track-title").addEventListener("click", (e) => {
+    e.stopPropagation();
+    updatePlayer(track);
+  });
   return col;
+}
+function updatePlayer(track) {
+  document.getElementById("playing-track-cover-mobile").src = track.album.cover_small;
+
+  document.getElementById("playing-track-title-mobile").textContent = track.title;
+
+  document.getElementById("playing-track-cover-desktop").src = track.album.cover_small;
+
+  document.getElementById("playing-track-title-desktop").textContent = track.title;
+
+  document.getElementById("playing-track-artist").textContent = track.artist.name;
 }

@@ -99,11 +99,26 @@ const showAlbumTracks = function (element) {
   });
 };
 
+//function to REMOVE PLACEHOLDERS
+const albumArtistName = document.getElementById("album-artist-name");
+const albumLabel = document.getElementById("album-label");
+const albumInfoLabel = document.getElementById("album-info-label");
+const removePlaceholders = function () {
+  const allPlaceholders = document.querySelectorAll(".placeholder");
+  allPlaceholders.forEach((placeholder) => placeholder.classList.add("d-none"));
+  albumCover.classList.remove("d-none");
+  albumArtistPicture.classList.remove("d-none");
+  albumArtistName.classList.remove("d-none");
+  albumLabel.classList.remove("d-none");
+  albumInfoLabel.classList.remove("d-none");
+};
+
 // function to get ALBUM INFOS
 const getAlbumInfos = function (ID) {
   fetch(apiURL + ID)
     .then((response) => {
       if (response.ok) {
+        removePlaceholders();
         return response.json();
       } else {
         throw new Error("Error in getting the album infos");

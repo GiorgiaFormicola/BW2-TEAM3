@@ -648,16 +648,12 @@
                   <i class="bi bi-speaker opacity-50"></i>
                   <div class="flex-grow-1 d-flex align-items-center">
                     <i class="bi bi-volume-down fs-2 opacity-50"></i>
-                    <div
-                      class="progress flex-grow-1"
-                      role="progressbar"
-                      aria-label="Example 2px high"
-                      aria-valuenow="25"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="height: 0.3em"
-                    >
-                      <div class="progress-bar bg-white" style="width: 50%"></div>
+                    <div class="progress flex-grow-1 position-relative" style="height: 0.3em">
+                      <!-- barra verde che cresce -->
+                      <div id="bar" class="progress-bar bg-success" style="width: 0%"></div>
+
+                      <!-- input invisibile sopra per drag (opzionale) -->
+                      <input type="range" id="volumeInput" class="position-absolute top-0 start-0 w-100 h-100 p-0 m-0" min="0" value="0" step="0.1" />
                     </div>
                   </div>
 

@@ -8,9 +8,11 @@ const playerTrackTitleDesktop = document.querySelector(".playing-track-title-des
 const playerTrackTitleDesktop2 = document.querySelector(".playing-track-title-desktop2");
 const playerTrackArtist = document.getElementById("playing-track-artist");
 const progressInput = document.getElementById("progressInput");
+const volumeInput = document.getElementById("volumeInput");
 const playerMusic = document.querySelector(".playerMusic");
 const playerI = document.querySelector(".playerI");
 const secondiPassati = document.querySelector(".secondiPassati");
+console.log(volumeInput);
 
 const playTrack = function (element) {
   playerTrackCoverMobile.src = element.album.cover_small;
@@ -88,6 +90,10 @@ getArtist();
 const startAudio = (track) => {
   const audio = new Audio(track);
   audio.play();
+  audio.volume = 0.5;
+  volumeInput.addEventListener("input", () => {
+    audio.volume = volumeInput.value / 100;
+  });
   audio.addEventListener("loadedmetadata", () => {
     secondiPassati.innerText = audio.currentTime;
   });

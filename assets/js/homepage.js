@@ -9,6 +9,7 @@ const playerTrackTitleDesktop2 = document.querySelector(".playing-track-title-de
 const playerTrackArtist = document.getElementById("playing-track-artist");
 const progressInput = document.getElementById("progressInput");
 const volumeInput = document.getElementById("volumeInput");
+const mobileBtnStart = document.getElementById("mobile-btn-start");
 const playerMusic = document.querySelector(".playerMusic");
 const playerI = document.querySelector(".playerI");
 const secondiPassati = document.querySelector(".secondiPassati");
@@ -91,6 +92,7 @@ const startAudio = (track) => {
   const audio = new Audio(track);
   audio.play();
   audio.volume = 0.5;
+  mobileBtnStart.classList.add("playerOnOff");
   volumeInput.addEventListener("input", () => {
     audio.volume = volumeInput.value / 100;
   });
@@ -116,5 +118,6 @@ const startAudio = (track) => {
       audio.pause();
     }
     playerI.classList.toggle("playerOnOff");
+    mobileBtnStart.classList.toggle("playerOnOff");
   });
 };

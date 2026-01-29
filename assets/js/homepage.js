@@ -2,16 +2,17 @@ const cards = document.querySelector("#cards");
 // function to play TRACK
 const playerTrackCoverMobile = document.getElementById("playing-track-cover-mobile");
 const playerTrackCoverDesktop = document.getElementById("playing-track-cover-desktop");
-const playerTrackTitleMobile = document.getElementById("playing-track-title-mobile");
+const playerTrackTitleMobile = document.querySelector(".playing-track-title-mobile");
+const playerTrackTitleMobile2 = document.querySelector(".playing-track-title-mobile2");
 const playerTrackTitleDesktop = document.querySelector(".playing-track-title-desktop");
 const playerTrackTitleDesktop2 = document.querySelector(".playing-track-title-desktop2");
-console.log(playerTrackTitleDesktop2);
 const playerTrackArtist = document.getElementById("playing-track-artist");
 
 const playTrack = function (element) {
   playerTrackCoverMobile.src = element.album.cover_small;
   playerTrackCoverDesktop.src = element.album.cover_small;
   playerTrackTitleMobile.innerText = ` ${element.title}`;
+  playerTrackTitleMobile2.innerText = ` ${element.title}`;
   playerTrackTitleDesktop.innerText = `${element.title}`;
   playerTrackTitleDesktop2.innerText = `${element.title}`;
   playerTrackArtist.innerText = `${element.artist.name}`;

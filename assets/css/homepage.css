@@ -87,7 +87,19 @@
   background: #9ebece;
   background: linear-gradient(147deg, rgba(158, 190, 206, 1) 0%, rgba(71, 71, 71, 1) 27%);
 }
+.width-custom {
+  width: 30%;
+}
+#test2 {
+  display: inline-flex;
+  animation: move-mobile linear 4s infinite;
+}
 @keyframes move {
+  to {
+    transform: translateX(-54%);
+  }
+}
+@keyframes move-mobile {
   to {
     transform: translateX(-54%);
   }

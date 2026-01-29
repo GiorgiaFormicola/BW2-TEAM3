@@ -16,7 +16,11 @@
 .shadow-custom {
   box-shadow: 0px 0px 5px 0.5px #dddddd;
 }
-
+/* bg body */
+.bg-body {
+  background: #3b3838;
+  background: linear-gradient(147deg, rgba(59, 56, 56, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
 /* fs p for playlist */
 
 .fs-custom {
@@ -57,9 +61,49 @@
 #test span {
   padding-right: 3rem;
 }
+/* bg sliders */
 
+.bg-study {
+  background: #edb95f;
+  background: linear-gradient(147deg, rgba(237, 185, 95, 1) 0%, rgba(71, 71, 71, 1) 27%);
+}
+.bg-jazz {
+  background: #6b586a;
+  background: linear-gradient(147deg, rgba(107, 88, 106, 1) 0%, rgba(71, 71, 71, 1) 27%);
+}
+.bg-rock {
+  background: #0c0a00;
+  background: linear-gradient(147deg, rgba(12, 10, 0, 1) 0%, rgba(71, 71, 71, 1) 27%);
+}
+.bg-run {
+  background: #deb059;
+  background: linear-gradient(147deg, rgba(222, 176, 89, 1) 0%, rgba(71, 71, 71, 1) 27%);
+}
+.bg-classic {
+  background: #bf00fe;
+  background: linear-gradient(147deg, rgba(191, 0, 254, 1) 0%, rgba(71, 71, 71, 1) 27%);
+}
+.bg-blues {
+  background: #9ebece;
+  background: linear-gradient(147deg, rgba(158, 190, 206, 1) 0%, rgba(71, 71, 71, 1) 27%);
+}
+.width-custom {
+  width: 30%;
+}
+#test2 {
+  display: inline-flex;
+  animation: move-mobile linear 4s infinite;
+}
 @keyframes move {
   to {
     transform: translateX(-54%);
   }
+}
+@keyframes move-mobile {
+  to {
+    transform: translateX(-54%);
+  }
+}
+.playerOnOff {
+  color: #20d65e !important;
 }

@@ -28,6 +28,7 @@ let artist = ["Queen", "coldplay", "geolier", "mariomerola", "tonypitony", "radi
 let random = [];
 let arrayTracks = [];
 let counter = 0;
+let audio = null;
 
 const randomNumber = () => {
   const number = Math.floor(Math.random() * 6);
@@ -75,8 +76,8 @@ const getSlides = (artist) => {
         trackOnPage.addEventListener("click", () => {
           playTrack(arrayTracks[trackOnPage.dataset.counter]);
           startAudio(arrayTracks[trackOnPage.dataset.counter].preview);
-          playerI.classList.toggle("playerOnOff");
-          mobileBtnStart.classList.toggle("playerOnOff");
+          playerI.classList.add("playerOnOff");
+          mobileBtnStart.classList.add("playerOnOff");
         });
       });
       counter++;
@@ -89,7 +90,11 @@ const getSlides = (artist) => {
 getArtist();
 
 const startAudio = (track) => {
-  const audio = new Audio(track);
+  if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+  audio = new Audio(track);
   audio.volume = 0.5;
 
   audio.addEventListener("loadedmetadata", () => {
@@ -113,18 +118,17 @@ const startAudio = (track) => {
     audio.currentTime = progressInput.value;
   });
 
-  playerMusic.forEach((e) => {
-    e.addEventListener("click", () => {
-      console.log("ciao");
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-      playerI.classList.toggle("playerOnOff");
-      mobileBtnStart.classList.toggle("playerOnOff");
-    });
-  });
-
   audio.play();
 };
+playerMusic.forEach((e) => {
+  e.addEventListener("click", () => {
+    console.log("ciao");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+    playerI.classList.toggle("playerOnOff");
+    mobileBtnStart.classList.toggle("playerOnOff");
+  });
+});

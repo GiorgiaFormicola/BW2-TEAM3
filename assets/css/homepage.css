@@ -104,3 +104,6 @@
     transform: translateX(-54%);
   }
 }
+.playerOnOff {
+  color: #20d65e !important;
+}

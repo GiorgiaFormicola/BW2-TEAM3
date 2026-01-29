@@ -7,6 +7,10 @@ const playerTrackTitleMobile2 = document.querySelector(".playing-track-title-mob
 const playerTrackTitleDesktop = document.querySelector(".playing-track-title-desktop");
 const playerTrackTitleDesktop2 = document.querySelector(".playing-track-title-desktop2");
 const playerTrackArtist = document.getElementById("playing-track-artist");
+const progressInput = document.getElementById("progressInput");
+const playerMusic = document.querySelector(".playerMusic");
+const playerI = document.querySelector(".playerI");
+const secondiPassati = document.querySelector(".secondiPassati");
 
 const playTrack = function (element) {
   playerTrackCoverMobile.src = element.album.cover_small;
@@ -52,6 +56,7 @@ const getSlides = (artist) => {
     })
     .then((data) => {
       const num = randomNumber();
+      console.log(data.data[num]);
       cards.innerHTML += `
                 <div class="col-6  col-lg-2 d-flex justify-content-center">
                   <div class="card border-0 bg-body-secondary p-2">
@@ -64,9 +69,11 @@ const getSlides = (artist) => {
         `;
       arrayTracks.push(data.data[num]);
       const allTracksOnPage = document.querySelectorAll(".track");
-      allTracksOnPage.forEach((trackOnPage, i) => {
+      allTracksOnPage.forEach((trackOnPage) => {
         trackOnPage.addEventListener("click", () => {
           playTrack(arrayTracks[trackOnPage.dataset.counter]);
+          startAudio(arrayTracks[trackOnPage.dataset.counter].preview);
+          playerI.classList.toggle("playerOnOff");
         });
       });
       counter++;
@@ -77,3 +84,31 @@ const getSlides = (artist) => {
     });
 };
 getArtist();
+
+const startAudio = (track) => {
+  const audio = new Audio(track);
+  audio.play();
+  audio.addEventListener("loadedmetadata", () => {
+    secondiPassati.innerText = audio.currentTime;
+  });
+  audio.addEventListener("timeupdate", () => {
+    progressInput.value = audio.currentTime;
+
+    time = `0:${Math.floor(audio.currentTime)}`;
+    secondiPassati.innerText = time;
+  });
+  audio.addEventListener("loadedmetadata", () => {
+    progressInput.max = audio.duration;
+  });
+  progressInput.addEventListener("input", () => {
+    audio.currentTime = progressInput.value;
+  });
+  playerMusic.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+    playerI.classList.toggle("playerOnOff");
+  });
+};

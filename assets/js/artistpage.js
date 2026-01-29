@@ -60,7 +60,7 @@ const playNewTrack = function (element) {
 };
 
 // function to GET TRACK from LOCAL STORAGE and play it
-const playTrack = function () {
+const playSavedTrack = function () {
   const trackOnLocalStorage = JSON.parse(localStorage.getItem("savedTrack"));
   playerTrackCoverMobile.src = trackOnLocalStorage.album.cover_small;
   playerTrackCoverDesktop.src = trackOnLocalStorage.album.cover_small;
@@ -70,7 +70,7 @@ const playTrack = function () {
   console.log(trackOnLocalStorage);
 };
 
-playTrack();
+playSavedTrack();
 
 // function to add event listener ACCORDING TO TRACKS ON PAGE
 // const addEventOnTracksOnPageDesk = function () {

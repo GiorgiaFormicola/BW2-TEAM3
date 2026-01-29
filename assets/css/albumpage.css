@@ -27,6 +27,12 @@
   font-size: 1.5em;
 }
 
+.background-gradient3 {
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  background-image: linear-gradient(360deg, #000000 0%, #000000 50%, #12121200 100%);
+}
+
 /* DESKTOP VERSION */
 @media screen and (min-width: 992px) {
   #play-button {

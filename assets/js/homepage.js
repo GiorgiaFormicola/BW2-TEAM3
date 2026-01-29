@@ -10,10 +10,9 @@ const playerTrackArtist = document.getElementById("playing-track-artist");
 const progressInput = document.getElementById("progressInput");
 const volumeInput = document.getElementById("volumeInput");
 const mobileBtnStart = document.getElementById("mobile-btn-start");
-const playerMusic = document.querySelector(".playerMusic");
+const playerMusic = document.querySelectorAll(".playerMusic");
 const playerI = document.querySelector(".playerI");
 const secondiPassati = document.querySelector(".secondiPassati");
-console.log(volumeInput);
 
 const playTrack = function (element) {
   playerTrackCoverMobile.src = element.album.cover_small;
@@ -77,6 +76,7 @@ const getSlides = (artist) => {
           playTrack(arrayTracks[trackOnPage.dataset.counter]);
           startAudio(arrayTracks[trackOnPage.dataset.counter].preview);
           playerI.classList.toggle("playerOnOff");
+          mobileBtnStart.classList.toggle("playerOnOff");
         });
       });
       counter++;
@@ -90,34 +90,41 @@ getArtist();
 
 const startAudio = (track) => {
   const audio = new Audio(track);
-  audio.play();
   audio.volume = 0.5;
-  mobileBtnStart.classList.add("playerOnOff");
-  volumeInput.addEventListener("input", () => {
-    audio.volume = volumeInput.value / 100;
-  });
+
   audio.addEventListener("loadedmetadata", () => {
-    secondiPassati.innerText = audio.currentTime;
+    progressInput.max = audio.duration;
+    secondiPassati.innerText = "0:00";
   });
+
   audio.addEventListener("timeupdate", () => {
     progressInput.value = audio.currentTime;
 
-    time = `0:${Math.floor(audio.currentTime)}`;
-    secondiPassati.innerText = time;
+    const m = Math.floor(audio.currentTime / 60);
+    const s = Math.floor(audio.currentTime % 60);
+    secondiPassati.innerText = `${m}:${String(s).padStart(2, "0")}`;
   });
-  audio.addEventListener("loadedmetadata", () => {
-    progressInput.max = audio.duration;
+
+  volumeInput.addEventListener("input", () => {
+    audio.volume = volumeInput.value / 100;
   });
+
   progressInput.addEventListener("input", () => {
     audio.currentTime = progressInput.value;
   });
-  playerMusic.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-    playerI.classList.toggle("playerOnOff");
-    mobileBtnStart.classList.toggle("playerOnOff");
+
+  playerMusic.forEach((e) => {
+    e.addEventListener("click", () => {
+      console.log("ciao");
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+      playerI.classList.toggle("playerOnOff");
+      mobileBtnStart.classList.toggle("playerOnOff");
+    });
   });
+
+  audio.play();
 };

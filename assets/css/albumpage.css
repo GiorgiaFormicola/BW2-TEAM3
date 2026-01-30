@@ -111,7 +111,7 @@
 main {
   padding-bottom: 130px;
 }
-@media (max-width: 480px) {
+@media (max-width: 991px) {
   main {
     padding-bottom: 30px;
   }

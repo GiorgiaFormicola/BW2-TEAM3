@@ -1,6 +1,7 @@
 main {
-  padding-bottom: 130px;
+  padding-bottom: 10em;
 }
+
 .card {
   transition:
     transform 0.25s ease,
@@ -48,8 +49,8 @@ main {
 .playerOnOff {
   color: #20d65e !important;
 }
-@media (max-width: 480px) {
+@media (max-width: 992px) {
   main {
-    padding-bottom: 30px;
+    padding-bottom: 3em;
   }
 }

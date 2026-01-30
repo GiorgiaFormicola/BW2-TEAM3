@@ -118,3 +118,9 @@
   background-position: 0px 0px;
   background-image: linear-gradient(360deg, #000000 0%, #000000 50%, #12121200 100%);
 }
+
+@media screen and (min-width: 992px) {
+  main {
+    padding-bottom: 8em;
+  }
+}

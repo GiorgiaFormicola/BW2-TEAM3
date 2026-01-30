@@ -27,6 +27,17 @@
   font-size: 1.5em;
 }
 
+.background-gradient {
+  background: #121212;
+  background: linear-gradient(0deg, rgba(18, 18, 18, 0.87) 0%, rgba(18, 18, 18, 0) 100%);
+}
+
+.background-gradient2 {
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  background-image: linear-gradient(360deg, #000000 0%, #12121200 100%);
+}
+
 .background-gradient3 {
   background-size: 100% 100%;
   background-position: 0px 0px;
@@ -66,3 +77,31 @@
     margin-bottom: 0;
   }
 }
+/*  */
+#test2 {
+  display: inline-flex;
+  animation: move-mobile linear 4s infinite;
+}
+@keyframes move {
+  to {
+    transform: translateX(-54%);
+  }
+}
+@keyframes move-mobile {
+  to {
+    transform: translateX(-54%);
+  }
+}
+#test {
+  display: inline-flex;
+  width: max-content;
+  animation: move 4s linear infinite;
+}
+#test span {
+  padding-right: 3rem;
+}
+
+.playerOnOff {
+  color: #20d65e !important;
+}
+/*  */

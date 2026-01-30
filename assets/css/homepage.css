@@ -107,3 +107,14 @@
 .playerOnOff {
   color: #20d65e !important;
 }
+.w-custom-up {
+  width: 96%;
+}
+.fontsize-custom {
+  font-size: 3rem;
+}
+.background-gradient3 {
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  background-image: linear-gradient(360deg, #000000 0%, #000000 50%, #12121200 100%);
+}

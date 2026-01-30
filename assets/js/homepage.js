@@ -67,6 +67,7 @@ const playTrack = function (element) {
   playerTrackCoverMobile.src = element.album.cover_small;
   playerTrackCoverDesktop.src = element.album.cover_small;
   playerTrackTitleMobile.innerText = ` ${element.title}`;
+  playerTrackTitleMobile2.innerText = `${element.title}`;
   playerTrackTitleDesktop.innerText = `${element.title}`;
   playerTrackTitleDesktop2.innerText = `${element.title}`;
   playerTrackArtist.innerText = `${element.artist.name}`;

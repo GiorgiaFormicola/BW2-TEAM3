@@ -13,22 +13,80 @@ const mobileBtnStart = document.getElementById("mobile-btn-start");
 const playerMusic = document.querySelectorAll(".playerMusic");
 const playerI = document.querySelector(".playerI");
 const secondiPassati = document.querySelector(".secondiPassati");
-
-const playTrack = function (element) {
-  playerTrackCoverMobile.src = element.album.cover_small;
-  playerTrackCoverDesktop.src = element.album.cover_small;
-  playerTrackTitleMobile.innerText = ` ${element.title}`;
-  playerTrackTitleMobile2.innerText = ` ${element.title}`;
-  playerTrackTitleDesktop.innerText = `${element.title}`;
-  playerTrackTitleDesktop2.innerText = `${element.title}`;
-  playerTrackArtist.innerText = `${element.artist.name}`;
-};
-
 let artist = ["Queen", "coldplay", "geolier", "mariomerola", "tonypitony", "radiohead"];
 let random = [];
 let arrayTracks = [];
 let counter = 0;
 let audio = null;
+
+const startAudio = (track) => {
+  if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+  audio = new Audio(track);
+  audio.volume = 0.5;
+
+  audio.addEventListener("loadedmetadata", () => {
+    progressInput.max = audio.duration;
+    secondiPassati.innerText = "0:00";
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    progressInput.value = audio.currentTime;
+
+    const m = Math.floor(audio.currentTime / 60);
+    const s = Math.floor(audio.currentTime % 60);
+    secondiPassati.innerText = `${m}:${String(s).padStart(2, "0")}`;
+  });
+
+  volumeInput.addEventListener("input", () => {
+    audio.volume = volumeInput.value / 100;
+  });
+
+  progressInput.addEventListener("input", () => {
+    audio.currentTime = progressInput.value;
+  });
+
+  audio.play();
+};
+playerMusic.forEach((e) => {
+  e.addEventListener("click", () => {
+    console.log("ciao");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+    playerI.classList.toggle("playerOnOff");
+    mobileBtnStart.classList.toggle("playerOnOff");
+  });
+});
+
+const playTrack = function (element) {
+  playerTrackCoverMobile.src = element.album.cover_small;
+  playerTrackCoverDesktop.src = element.album.cover_small;
+  playerTrackTitleMobile.innerText = ` ${element.title}`;
+  playerTrackTitleDesktop.innerText = `${element.title}`;
+  playerTrackTitleDesktop2.innerText = `${element.title}`;
+  playerTrackArtist.innerText = `${element.artist.name}`;
+  localStorage.setItem("savedTrack", JSON.stringify(element));
+};
+// function to GET TRACK from LOCAL STORAGE and play it
+const playSavedTrack = function () {
+  const trackOnLocalStorage = JSON.parse(localStorage.getItem("savedTrack"));
+  playerTrackCoverMobile.src = trackOnLocalStorage.album.cover_small;
+  playerTrackCoverDesktop.src = trackOnLocalStorage.album.cover_small;
+  playerTrackTitleMobile.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackTitleDesktop.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackTitleMobile2.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackTitleDesktop2.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackArtist.innerText = `${trackOnLocalStorage.artist.name}`;
+  console.log(trackOnLocalStorage);
+  startAudio(trackOnLocalStorage.preview);
+};
+
+playSavedTrack();
 
 const randomNumber = () => {
   const number = Math.floor(Math.random() * 6);
@@ -88,47 +146,3 @@ const getSlides = (artist) => {
     });
 };
 getArtist();
-
-const startAudio = (track) => {
-  if (audio) {
-    audio.pause();
-    audio.currentTime = 0;
-  }
-  audio = new Audio(track);
-  audio.volume = 0.5;
-
-  audio.addEventListener("loadedmetadata", () => {
-    progressInput.max = audio.duration;
-    secondiPassati.innerText = "0:00";
-  });
-
-  audio.addEventListener("timeupdate", () => {
-    progressInput.value = audio.currentTime;
-
-    const m = Math.floor(audio.currentTime / 60);
-    const s = Math.floor(audio.currentTime % 60);
-    secondiPassati.innerText = `${m}:${String(s).padStart(2, "0")}`;
-  });
-
-  volumeInput.addEventListener("input", () => {
-    audio.volume = volumeInput.value / 100;
-  });
-
-  progressInput.addEventListener("input", () => {
-    audio.currentTime = progressInput.value;
-  });
-
-  audio.play();
-};
-playerMusic.forEach((e) => {
-  e.addEventListener("click", () => {
-    console.log("ciao");
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-    playerI.classList.toggle("playerOnOff");
-    mobileBtnStart.classList.toggle("playerOnOff");
-  });
-});

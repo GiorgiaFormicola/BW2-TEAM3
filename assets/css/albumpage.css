@@ -105,3 +105,14 @@
   color: #20d65e !important;
 }
 /*  */
+
+/*  */
+
+main {
+  padding-bottom: 130px;
+}
+@media (max-width: 480px) {
+  main {
+    padding-bottom: 30px;
+  }
+}

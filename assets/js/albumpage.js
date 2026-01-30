@@ -53,20 +53,34 @@ const showAlbumInfos = function (element) {
   albumDuration.innerText = displayDurationLongVersion(element.duration);
 };
 
-// function to play TRACK
+// function to play TRACK and SAVE on LOCAL STORAGE
 const playerTrackCoverMobile = document.getElementById("playing-track-cover-mobile");
 const playerTrackCoverDesktop = document.getElementById("playing-track-cover-desktop");
 const playerTrackTitleMobile = document.getElementById("playing-track-title-mobile");
 const playerTrackTitleDesktop = document.getElementById("playing-track-title-desktop");
 const playerTrackArtist = document.getElementById("playing-track-artist");
 
-const playTrack = function (element) {
+const playNewTrack = function (element) {
   playerTrackCoverMobile.src = element.album.cover_small;
   playerTrackCoverDesktop.src = element.album.cover_small;
   playerTrackTitleMobile.innerText = `${element.title}`;
   playerTrackTitleDesktop.innerText = `${element.title}`;
   playerTrackArtist.innerText = `${element.artist.name}`;
+  localStorage.setItem("savedTrack", JSON.stringify(element));
 };
+
+// function to GET TRACK from LOCAL STORAGE and play it
+const playSavedTrack = function () {
+  const trackOnLocalStorage = JSON.parse(localStorage.getItem("savedTrack"));
+  playerTrackCoverMobile.src = trackOnLocalStorage.album.cover_small;
+  playerTrackCoverDesktop.src = trackOnLocalStorage.album.cover_small;
+  playerTrackTitleMobile.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackTitleDesktop.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackArtist.innerText = `${trackOnLocalStorage.artist.name}`;
+  console.log(trackOnLocalStorage);
+};
+
+playSavedTrack();
 
 // function to show ALBUM TRACKS
 const tracksContainer = document.getElementById("tracks-container");
@@ -95,8 +109,22 @@ const showAlbumTracks = function (element) {
 
   const allTracksOnPage = document.querySelectorAll(".track");
   allTracksOnPage.forEach((trackOnPage, i) => {
-    trackOnPage.addEventListener("click", () => playTrack(albumTracksArray[i]));
+    trackOnPage.addEventListener("click", () => playNewTrack(albumTracksArray[i]));
   });
+};
+
+//function to REMOVE PLACEHOLDERS
+const albumArtistName = document.getElementById("album-artist-name");
+const albumLabel = document.getElementById("album-label");
+const albumInfoLabel = document.getElementById("album-info-label");
+const removePlaceholders = function () {
+  const allPlaceholders = document.querySelectorAll(".placeholder");
+  allPlaceholders.forEach((placeholder) => placeholder.classList.add("d-none"));
+  albumCover.classList.remove("d-none");
+  albumArtistPicture.classList.remove("d-none");
+  albumArtistName.classList.remove("d-none");
+  albumLabel.classList.remove("d-none");
+  albumInfoLabel.classList.remove("d-none");
 };
 
 // function to get ALBUM INFOS
@@ -104,6 +132,7 @@ const getAlbumInfos = function (ID) {
   fetch(apiURL + ID)
     .then((response) => {
       if (response.ok) {
+        removePlaceholders();
         return response.json();
       } else {
         throw new Error("Error in getting the album infos");

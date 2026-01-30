@@ -1,6 +1,8 @@
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 const cardsGrid = document.querySelector(".row.g-3");
+let audioPlayer = new Audio();
+let isPlaying = false;
 
 let timeout = null;
 searchInput.addEventListener("keyup", () => {
@@ -52,7 +54,7 @@ function showSearchResults(tracks) {
 }
 function createTrackCard(track) {
   const col = document.createElement("div");
-  col.className = "col-6 col-md-4 col-lg-3 col-xl-2";
+  col.className = "col-6 col-md-4 col-lg-3 ";
 
   col.innerHTML = `
     <div class="bg-dark rounded p-2 h-100">
@@ -92,12 +94,78 @@ function createTrackCard(track) {
 }
 function updatePlayer(track) {
   document.getElementById("playing-track-cover-mobile").src = track.album.cover_small;
-
   document.getElementById("playing-track-title-mobile").textContent = track.title;
 
   document.getElementById("playing-track-cover-desktop").src = track.album.cover_small;
-
   document.getElementById("playing-track-title-desktop").textContent = track.title;
-
   document.getElementById("playing-track-artist").textContent = track.artist.name;
+
+  localStorage.setItem(
+    "currentTrack",
+    JSON.stringify({
+      title: track.title,
+      artist: track.artist.name,
+      cover: track.album.cover_small,
+    }),
+  );
+  // PER IL PLAY
+  audioPlayer.src = track.preview;
+  audioPlayer.play();
+  isPlaying = true;
+  updatePlayIcons(true);
 }
+
+// DA METTERE IN TUTTI I JS INIZIO
+function loadPlayerFromStorage() {
+  const savedTrack = localStorage.getItem("currentTrack");
+  if (!savedTrack) return;
+
+  const track = JSON.parse(savedTrack);
+
+  document.getElementById("playing-track-cover-mobile").src = track.cover;
+  document.getElementById("playing-track-title-mobile").textContent = track.title;
+
+  document.getElementById("playing-track-cover-desktop").src = track.cover;
+  document.getElementById("playing-track-title-desktop").textContent = track.title;
+  document.getElementById("playing-track-artist").textContent = track.artist;
+}
+document.addEventListener("DOMContentLoaded", loadPlayerFromStorage);
+// FINE PARTE IN COMUNE
+
+// PER FAR FUNZIONARE IL PLAY
+function togglePlay() {
+  if (!audioPlayer.src) return;
+
+  if (isPlaying) {
+    audioPlayer.pause();
+    isPlaying = false;
+    updatePlayIcons(false);
+  } else {
+    audioPlayer.play();
+    isPlaying = true;
+    updatePlayIcons(true);
+  }
+}
+
+function updatePlayIcons(playing) {
+  const mobile = document.getElementById("play-btn-mobile");
+  const desktop = document.getElementById("play-btn-desktop");
+
+  if (!mobile || !desktop) return;
+
+  if (playing) {
+    mobile.className = "bi bi-pause-fill";
+    desktop.className = "bi bi-pause-circle-fill fs-2 text-white mx-1";
+  } else {
+    mobile.className = "bi bi-play-fill";
+    desktop.className = "bi bi-play-circle-fill fs-2 text-white mx-1";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("play-btn-mobile")?.addEventListener("click", togglePlay);
+
+  document.getElementById("play-btn-desktop")?.addEventListener("click", togglePlay);
+});
+
+// FINE FUNZIONE PLAYER

@@ -2,11 +2,66 @@ const cards = document.querySelector("#cards");
 // function to play TRACK
 const playerTrackCoverMobile = document.getElementById("playing-track-cover-mobile");
 const playerTrackCoverDesktop = document.getElementById("playing-track-cover-desktop");
-const playerTrackTitleMobile = document.getElementById("playing-track-title-mobile");
+const playerTrackTitleMobile = document.querySelector(".playing-track-title-mobile");
+const playerTrackTitleMobile2 = document.querySelector(".playing-track-title-mobile2");
 const playerTrackTitleDesktop = document.querySelector(".playing-track-title-desktop");
 const playerTrackTitleDesktop2 = document.querySelector(".playing-track-title-desktop2");
-console.log(playerTrackTitleDesktop2);
 const playerTrackArtist = document.getElementById("playing-track-artist");
+const progressInput = document.getElementById("progressInput");
+const volumeInput = document.getElementById("volumeInput");
+const mobileBtnStart = document.getElementById("mobile-btn-start");
+const playerMusic = document.querySelectorAll(".playerMusic");
+const playerI = document.querySelector(".playerI");
+const secondiPassati = document.querySelector(".secondiPassati");
+let artist = ["Queen", "coldplay", "geolier", "mariomerola", "tonypitony", "radiohead"];
+let random = [];
+let arrayTracks = [];
+let counter = 0;
+let audio = null;
+
+const startAudio = (track) => {
+  if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+  audio = new Audio(track);
+  audio.volume = 0.5;
+
+  audio.addEventListener("loadedmetadata", () => {
+    progressInput.max = audio.duration;
+    secondiPassati.innerText = "0:00";
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    progressInput.value = audio.currentTime;
+
+    const m = Math.floor(audio.currentTime / 60);
+    const s = Math.floor(audio.currentTime % 60);
+    secondiPassati.innerText = `${m}:${String(s).padStart(2, "0")}`;
+  });
+
+  volumeInput.addEventListener("input", () => {
+    audio.volume = volumeInput.value / 100;
+  });
+
+  progressInput.addEventListener("input", () => {
+    audio.currentTime = progressInput.value;
+  });
+
+  audio.play();
+};
+playerMusic.forEach((e) => {
+  e.addEventListener("click", () => {
+    console.log("ciao");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+    playerI.classList.toggle("playerOnOff");
+    mobileBtnStart.classList.toggle("playerOnOff");
+  });
+});
 
 const playTrack = function (element) {
   playerTrackCoverMobile.src = element.album.cover_small;
@@ -15,12 +70,23 @@ const playTrack = function (element) {
   playerTrackTitleDesktop.innerText = `${element.title}`;
   playerTrackTitleDesktop2.innerText = `${element.title}`;
   playerTrackArtist.innerText = `${element.artist.name}`;
+  localStorage.setItem("savedTrack", JSON.stringify(element));
+};
+// function to GET TRACK from LOCAL STORAGE and play it
+const playSavedTrack = function () {
+  const trackOnLocalStorage = JSON.parse(localStorage.getItem("savedTrack"));
+  playerTrackCoverMobile.src = trackOnLocalStorage.album.cover_small;
+  playerTrackCoverDesktop.src = trackOnLocalStorage.album.cover_small;
+  playerTrackTitleMobile.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackTitleDesktop.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackTitleMobile2.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackTitleDesktop2.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackArtist.innerText = `${trackOnLocalStorage.artist.name}`;
+  console.log(trackOnLocalStorage);
+  startAudio(trackOnLocalStorage.preview);
 };
 
-let artist = ["Queen", "coldplay", "geolier", "mariomerola", "tonypitony", "radiohead"];
-let random = [];
-let arrayTracks = [];
-let counter = 0;
+playSavedTrack();
 
 const randomNumber = () => {
   const number = Math.floor(Math.random() * 6);
@@ -51,6 +117,7 @@ const getSlides = (artist) => {
     })
     .then((data) => {
       const num = randomNumber();
+      console.log(data.data[num]);
       cards.innerHTML += `
                 <div class="col-6  col-lg-2 d-flex justify-content-center">
                   <div class="card border-0 bg-body-secondary p-2">
@@ -63,9 +130,12 @@ const getSlides = (artist) => {
         `;
       arrayTracks.push(data.data[num]);
       const allTracksOnPage = document.querySelectorAll(".track");
-      allTracksOnPage.forEach((trackOnPage, i) => {
+      allTracksOnPage.forEach((trackOnPage) => {
         trackOnPage.addEventListener("click", () => {
           playTrack(arrayTracks[trackOnPage.dataset.counter]);
+          startAudio(arrayTracks[trackOnPage.dataset.counter].preview);
+          playerI.classList.add("playerOnOff");
+          mobileBtnStart.classList.add("playerOnOff");
         });
       });
       counter++;

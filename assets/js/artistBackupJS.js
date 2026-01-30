@@ -29,6 +29,11 @@ const deskSongDuration = document.getElementById("song-duration");
 const deskLikedPic = document.getElementById("liked-pic-desk");
 const deskLikedName = document.getElementById("liked-artist-name-desk");
 const deskFans = document.getElementById("fans-desk");
+// HEADER PLACEHOLDER
+const artistHeaderPlaceholder = document.getElementById("artist-header-placeholder");
+const artistHeaderContent = document.getElementById("artist-header-content");
+// BADGE VERIFICATO
+const verifiedBadge = document.getElementById("verified-badge");
 
 // DISPLAY DURATION
 const displayDurationShortVersion = function (duration) {
@@ -110,9 +115,13 @@ const getArtistInfos = () => {
       artPic.src = artista.picture_xl;
       mobFans.innerText = artista.nb_fan.toString().slice(-8);
       deskFans.innerText = artista.nb_fan.toString().slice(-8);
-      //   NOME ARTISTA
-      // NUMERI FAN
-      // PIC ARTISTA
+      // BADGE ARTISTA VERIFICATO
+      if (!artista.radio) {
+        verifiedBadge.classList.add("d-none");
+      }
+      // 🔥 SWITCH PLACEHOLDER → CONTENUTO
+      artistHeaderPlaceholder.classList.add("d-none");
+      artistHeaderContent.classList.remove("d-none");
     })
     .catch((err) => {
       console.log(err);
@@ -130,7 +139,7 @@ const getTrackList = () => {
       if (res.ok) {
         return res.json();
       } else {
-        throw new Error("MADONNA MIAAA");
+        throw new Error("GIGA PROBLEMI");
       }
     })
     .then((tracksArray) => {
@@ -143,7 +152,7 @@ const getTrackList = () => {
       });
     })
     .catch((err) => {
-      console.log("test", err);
+      console.log("UN MACELLO", err);
     });
 };
 
@@ -166,13 +175,13 @@ showMoreButton.addEventListener("click", () => {
     let allTheHtmlMob = "";
     // se non le vedo tutte - MOSTRA TUTTO
     allTracks.forEach((track, i) => {
-      allTheHtmlMob += createTrackDesk(track, i);
+      allTheHtmlMob += createTrackMobile(track, i);
     });
     allTracks.forEach((track, i) => {
-      allTheHtmlDesk += createTrackMobile(track, i);
+      allTheHtmlDesk += createTrackDesk(track, i);
     });
     tracksRowDesk.innerHTML = allTheHtmlDesk;
-    tracksRowDesk.innerHTML = allTheHtmlMob;
+    tracksRowMob.innerHTML = allTheHtmlMob;
 
     showMoreButton.textContent = "VISUALIZZA MENO";
     showAll = true;
@@ -182,13 +191,13 @@ showMoreButton.addEventListener("click", () => {
     // se le vedo tutte - MOSTRA MENO
     // FACCIO LO SLICE
     allTracks.slice(0, 10).forEach((track, i) => {
-      allTheHtmlMob += createTrackDesk(track, i);
+      allTheHtmlMob += createTrackMobile(track, i);
     });
     allTracks.slice(0, 10).forEach((track, i) => {
-      allTheHtmlDesk += createTrackMobile(track, i);
+      allTheHtmlDesk += createTrackDesk(track, i);
     });
     tracksRowDesk.innerHTML = allTheHtmlDesk;
-    tracksRowDesk.innerHTML = allTheHtmlMob;
+    tracksRowMob.innerHTML = allTheHtmlMob;
 
     showMoreButton.textContent = "VISUALIZZA ALTRO";
     showAll = false;

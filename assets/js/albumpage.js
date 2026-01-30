@@ -54,19 +54,113 @@ const showAlbumInfos = function (element) {
 };
 
 // function to play TRACK and SAVE on LOCAL STORAGE
+// const playerTrackCoverMobile = document.getElementById("playing-track-cover-mobile");
+// const playerTrackCoverDesktop = document.getElementById("playing-track-cover-desktop");
+// const playerTrackTitleMobile = document.getElementById("playing-track-title-mobile");
+// const playerTrackTitleDesktop = document.getElementById("playing-track-title-desktop");
+// const playerTrackArtist = document.getElementById("playing-track-artist");
+// const playerTrackTitleMobile2 = document.querySelector(".playing-track-title-mobile2");
+// const playerTrackTitleDesktop2 = document.querySelector(".playing-track-title-desktop2");
+//
+
 const playerTrackCoverMobile = document.getElementById("playing-track-cover-mobile");
 const playerTrackCoverDesktop = document.getElementById("playing-track-cover-desktop");
-const playerTrackTitleMobile = document.getElementById("playing-track-title-mobile");
-const playerTrackTitleDesktop = document.getElementById("playing-track-title-desktop");
+const playerTrackTitleMobile = document.querySelector(".playing-track-title-mobile");
+const playerTrackTitleMobile2 = document.querySelector(".playing-track-title-mobile2");
+const playerTrackTitleDesktop = document.querySelector(".playing-track-title-desktop");
+const playerTrackTitleDesktop2 = document.querySelector(".playing-track-title-desktop2");
 const playerTrackArtist = document.getElementById("playing-track-artist");
+const progressInput = document.getElementById("progressInput");
+const volumeInput = document.getElementById("volumeInput");
+const mobileBtnStart = document.getElementById("mobile-btn-start");
+const playerMusic = document.querySelectorAll(".playerMusic");
+const playerI = document.querySelector(".playerI");
+const secondiPassati = document.querySelector(".secondiPassati");
+
+let audio;
+
+const startAudio = (track) => {
+  if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+  audio = new Audio(track);
+  audio.volume = 0.5;
+
+  audio.addEventListener("loadedmetadata", () => {
+    progressInput.max = audio.duration;
+    secondiPassati.innerText = "0:00";
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    progressInput.value = audio.currentTime;
+
+    const m = Math.floor(audio.currentTime / 60);
+    const s = Math.floor(audio.currentTime % 60);
+    secondiPassati.innerText = `${m}:${String(s).padStart(2, "0")}`;
+  });
+
+  volumeInput.addEventListener("input", () => {
+    audio.volume = volumeInput.value / 100;
+  });
+
+  progressInput.addEventListener("input", () => {
+    audio.currentTime = progressInput.value;
+  });
+
+  audio.play();
+};
+
+playerMusic.forEach((e) => {
+  e.addEventListener("click", () => {
+    console.log("ciao");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+    playerI.classList.toggle("playerOnOff");
+    mobileBtnStart.classList.toggle("playerOnOff");
+  });
+});
+
+// const mobilePlayButton = document.getElementById("mobile-play-button");
+// const mobilePauseButton = document.getElementById("mobile-pause-button");
+// const playerButtonsGroup = document.getElementById("player-buttons-group");
+// console.log(playerButtonsGroup);
+
+// const makePlayerButtonsWorking = function () {
+//   playerButtonsGroup.addEventListener("click", function () {
+//     mobilePlayButton.classList.toggle("d-none");
+//     mobilePauseButton.classList.toggle("d-none");
+//   });
+//   // mobilePlayButton.addEventListener("click", function () {
+//   //   mobilePlayButton.classList.toggle("d-none");
+//   // });
+//   // mobilePauseButton.addEventListener("click", function () {
+//   //   mobilePauseButton.classList.toggle("d-none");
+//   // });
+// };
+
+// makePlayerButtonsWorking();
 
 const playNewTrack = function (element) {
   playerTrackCoverMobile.src = element.album.cover_small;
   playerTrackCoverDesktop.src = element.album.cover_small;
   playerTrackTitleMobile.innerText = `${element.title}`;
   playerTrackTitleDesktop.innerText = `${element.title}`;
+  playerTrackTitleMobile2.innerText = `${element.title}`;
+  playerTrackTitleDesktop2.innerText = `${element.title}`;
   playerTrackArtist.innerText = `${element.artist.name}`;
+
   localStorage.setItem("savedTrack", JSON.stringify(element));
+  // audio.src = element.preview;
+  // audio.addEventListener("canplay", (e) => {
+  //   audio.play();
+  // });
+  startAudio(element.preview);
+  playerI.classList.add("playerOnOff");
+  mobileBtnStart.classList.add("playerOnOff");
 };
 
 // function to GET TRACK from LOCAL STORAGE and play it
@@ -76,8 +170,11 @@ const playSavedTrack = function () {
   playerTrackCoverDesktop.src = trackOnLocalStorage.album.cover_small;
   playerTrackTitleMobile.innerText = `${trackOnLocalStorage.title}`;
   playerTrackTitleDesktop.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackTitleMobile2.innerText = `${trackOnLocalStorage.title}`;
+  playerTrackTitleDesktop2.innerText = `${trackOnLocalStorage.title}`;
   playerTrackArtist.innerText = `${trackOnLocalStorage.artist.name}`;
   console.log(trackOnLocalStorage);
+  startAudio(trackOnLocalStorage.preview);
 };
 
 playSavedTrack();
@@ -109,7 +206,9 @@ const showAlbumTracks = function (element) {
 
   const allTracksOnPage = document.querySelectorAll(".track");
   allTracksOnPage.forEach((trackOnPage, i) => {
-    trackOnPage.addEventListener("click", () => playNewTrack(albumTracksArray[i]));
+    trackOnPage.addEventListener("click", () => {
+      playNewTrack(albumTracksArray[i]);
+    });
   });
 };
 

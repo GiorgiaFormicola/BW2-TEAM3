@@ -107,3 +107,9 @@
 .playerOnOff {
   color: #20d65e !important;
 }
+.w-custom-up {
+  width: 96%;
+}
+.fontsize-custom {
+  font-size: 3rem;
+}

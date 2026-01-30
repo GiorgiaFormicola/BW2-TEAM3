@@ -13,15 +13,49 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="./assets/css/albumpage.css" />
   </head>
-  <body data-bs-theme="dark" class="album-gradient">
+  <body data-bs-theme="dark" class="background-gradient2">
     <div class="container-fluid">
       <!-- START GENERAL ROW -->
       <div class="row">
         <!-- START LEFT ASIDE -->
-        <div class="col col-3 d-none d-lg-flex"></div>
+        <div class="col-3 w-25 d-none d-lg-flex flex-column bg-black p-3 gap-3 vh-100 position-sticky top-0">
+          <div class="dropdown">
+            <i class="bi bi-three-dots fs-4" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">File</a></li>
+              <li><a class="dropdown-item" href="#">Modifica</a></li>
+              <li><a class="dropdown-item" href="#">Visualizza</a></li>
+            </ul>
+          </div>
+
+          <nav class="nav flex-column gap-2">
+            <a href="./index.html" class="nav-link text-white fw-semibold"> <i class="bi bi-house-door me-2"></i> Home </a>
+            <a href="search.html" class="nav-link text-white fw-semibold"> <i class="bi bi-search me-2"></i> Cerca </a>
+            <a class="nav-link text-white fw-semibold"> <i class="bi bi-collection me-2"></i> La tua libreria </a>
+          </nav>
+
+          <hr class="border-secondary" />
+
+          <nav class="nav flex-column gap-2">
+            <a class="nav-link text-white"> <i class="bi bi-plus-square me-2"></i> Crea playlist </a>
+            <a class="nav-link text-white"> <i class="bi bi-heart-fill me-2"></i> Brani che ti piacciono </a>
+            <a class="nav-link text-white"> <i class="bi bi-broadcast me-2"></i> I tuoi episodi </a>
+          </nav>
+          <hr class="border-secondary" />
+          <!-- spazio vuoto nero -->
+          <div class="flex-grow-1 container">
+            <p class="text-secondary">per la mattina</p>
+            <p class="text-secondary">messicana</p>
+            <p class="text-secondary">brani preferiti</p>
+            <p class="text-secondary">estate 2k22</p>
+            <p class="text-secondary">best 2024</p>
+            <p class="text-secondary">australia 2025</p>
+          </div>
+        </div>
         <!-- ENDS LEFT ASIDE -->
         <!-- START MAIN SECTION -->
-        <main class="col col-12 col-lg-7 offset-lg-3 min-vh-100 px-4 pb-4">
+        <main class="col col-12 col-lg-7 min-vh-100 px-4 pb-4">
           <!-- START FRECCIA NAVIGAZIONE MOBILE -->
           <a href="javascript:history.go(-1);" class="link-light"><i class="bi bi-arrow-left fs-1 sticky-top pt-5 d-lg-none"></i> </a>
           <!-- END FRECCIA NAVIGAZIONE MOBILE -->
@@ -161,7 +195,31 @@
         </main>
         <!-- END MAIN SECTION -->
         <!-- START RIGHT ASIDE -->
-        <div class="col col-2 d-none d-lg-block"></div>
+        <div class="col-2 d-none d-lg-flex flex-column bg-black p-3 gap-3 vh-100 position-fixed end-0">
+          <div class="fw-bold small opacity-75 mb-2">Partecipanti</div>
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px">GF</div>
+            <span class="small">Giorgia Formicola</span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px">FL</div>
+            <span class="small">Francesco Loffredo</span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px">FD</div>
+            <span class="small">Francesco Dattola</span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px">FA</div>
+            <span class="small">Francesco Alves</span>
+          </div>
+
+          <div class="flex-grow-1"></div>
+        </div>
         <!-- ENDS RIGHT ASIDE -->
       </div>
       <!-- END GENERAL ROW -->
@@ -253,7 +311,7 @@
             <i class="bi bi-heart opacity-50 px-3"></i>
             <!-- <i class="bi bi-heart-fill opacity-50 px-3"></i> -->
           </div>
-          <div class="col col-6">
+          <div class="col col-5 offset-1">
             <div class="d-flex justify-content-center align-items-center gap-2">
               <div class="spotify-green d-flex flex-column align-items-center position-relative">
                 <i class="bi bi-shuffle"></i>
@@ -279,7 +337,7 @@
               <small class="opacity-50 secondiTotali">0:30</small>
             </div>
           </div>
-          <div class="col col-3 d-flex align-items-center gap-2">
+          <div class="col col-2 offset-1 d-flex align-items-center gap-2">
             <i class="bi bi-mic opacity-50"></i>
             <i class="bi bi-list fs-5 opacity-50"></i>
             <i class="bi bi-speaker opacity-50"></i>

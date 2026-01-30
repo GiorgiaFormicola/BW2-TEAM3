@@ -29,6 +29,11 @@ const deskSongDuration = document.getElementById("song-duration");
 const deskLikedPic = document.getElementById("liked-pic-desk");
 const deskLikedName = document.getElementById("liked-artist-name-desk");
 const deskFans = document.getElementById("fans-desk");
+// HEADER PLACEHOLDER
+const artistHeaderPlaceholder = document.getElementById("artist-header-placeholder");
+const artistHeaderContent = document.getElementById("artist-header-content");
+// BADGE VERIFICATO
+const verifiedBadge = document.getElementById("verified-badge");
 
 // DISPLAY DURATION
 const displayDurationShortVersion = function (duration) {
@@ -247,7 +252,7 @@ const getTrackList = () => {
       if (res.ok) {
         return res.json();
       } else {
-        throw new Error("MADONNA MIAAA");
+        throw new Error("GIGA PROBLEMI");
       }
     })
     .then((tracksArray) => {
@@ -356,7 +361,7 @@ const getTrackList = () => {
       });
     })
     .catch((err) => {
-      console.log("test", err);
+      console.log("UN MACELLO", err);
     });
 };
 

@@ -60,17 +60,17 @@ const playNewTrack = function (element) {
 };
 
 // function to GET TRACK from LOCAL STORAGE and play it
-const playSavedTrack = function () {
-  const trackOnLocalStorage = JSON.parse(localStorage.getItem("savedTrack"));
-  playerTrackCoverMobile.src = trackOnLocalStorage.album.cover_small;
-  playerTrackCoverDesktop.src = trackOnLocalStorage.album.cover_small;
-  playerTrackTitleMobile.innerText = `${trackOnLocalStorage.title}`;
-  playerTrackTitleDesktop.innerText = `${trackOnLocalStorage.title}`;
-  playerTrackArtist.innerText = `${trackOnLocalStorage.artist.name}`;
-  console.log(trackOnLocalStorage);
-};
+// const playSavedTrack = function () {
+//   const trackOnLocalStorage = JSON.parse(localStorage.getItem("savedTrack"));
+//   playerTrackCoverMobile.src = trackOnLocalStorage.album.cover_small;
+//   playerTrackCoverDesktop.src = trackOnLocalStorage.album.cover_small;
+//   playerTrackTitleMobile.innerText = `${trackOnLocalStorage.title}`;
+//   playerTrackTitleDesktop.innerText = `${trackOnLocalStorage.title}`;
+//   playerTrackArtist.innerText = `${trackOnLocalStorage.artist.name}`;
+//   console.log(trackOnLocalStorage);
+// };
 
-playSavedTrack();
+// playSavedTrack();
 
 // function to add event listener ACCORDING TO TRACKS ON PAGE
 // const addEventOnTracksOnPageDesk = function () {

@@ -13,7 +13,7 @@ const mobileBtnStart = document.getElementById("mobile-btn-start");
 const playerMusic = document.querySelectorAll(".playerMusic");
 const playerI = document.querySelector(".playerI");
 const secondiPassati = document.querySelector(".secondiPassati");
-let artist = ["Queen", "coldplay", "geolier", "mariomerola", "tonypitony", "radiohead"];
+let artist = ["Queen", "coldplay", "geolier", "tonypitony", "radiohead"];
 let random = [];
 let arrayTracks = [];
 let counter = 0;
@@ -90,12 +90,12 @@ const playSavedTrack = function () {
 playSavedTrack();
 
 const randomNumber = () => {
-  const number = Math.floor(Math.random() * 6);
+  const number = Math.floor(Math.random() * 5);
   return number;
 };
 
 const numbers = () => {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 5; i++) {
     let number = randomNumber();
     while (random.includes(number)) {
       number = randomNumber();
@@ -105,7 +105,7 @@ const numbers = () => {
 };
 numbers();
 const getArtist = () => {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 5; i++) {
     getSlides(artist[random[i]]);
   }
 };

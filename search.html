@@ -60,9 +60,9 @@
 
             <!-- BARRA DI RICERCA -->
             <div class="input-group mb-4 py-3">
-              <span class="input-group-text bg-secondary bg-opacity-25 border-0">
-                <i class="bi bi-search text-white"></i>
-              </span>
+              <button id="searchBtn" class="input-group-text bg-secondary bg-opacity-25 border-0 text-white" type="button">
+                <i class="bi bi-search"></i>
+              </button>
               <input id="searchInput" type="text" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-3" placeholder="Cosa vuoi ascoltare?" />
             </div>
 
@@ -236,30 +236,25 @@
           alt="Album cover"
           height="60em"
         />
-        <h5 id="playing-track-title-mobile" class="my-0 text-light text-nowrap overflow-hidden py-3 flex-grow-1">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </h5>
+        <div class="width-custom text-nowrap overflow-hidden">
+          <p id="test2" class="my-0 text-light text-nowrap overflow-hidden py-3 flex-grow-1 test">
+            <span class="playing-track-title-mobile text-light fw-semibold">Ninnananna per genitori disattenti</span>
+            <span class="ms-5 text-light fw-semibold playing-track-title-mobile2">Ninnananna per genitori disattenti</span>
+          </p>
+        </div>
         <div class="d-flex gap-4 align-items-center">
           <!-- <i class="bi bi-tv opacity-50 fs-1"></i> -->
           <i class="bi bi-speaker opacity-50 fs-1"></i>
           <i class="bi bi-heart fs-1 text-light"></i>
           <!-- <i class="bi bi-heart-fill fs-1"></i> -->
-          <svg
-            id="play-btn-mobile"
-            xmlns="http://www.w3.org/2000/svg"
-            width="2.5em"
-            height="2.5em"
-            fill="currentColor"
-            class="bi bi-play-fill"
-            viewBox="0 0 16 16"
-          >
-            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
-          </svg>
-
-          <!-- <svg id="play-btn" xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
-            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
-          </svg> -->
-
+          <button class="bg-transparent border-0 playerMusic">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+              <path
+                id="mobile-btn-start"
+                d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"
+              />
+            </svg>
+          </button>
           <!-- <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" class="bi bi-pause" viewBox="0 0 16 16">
             <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5" />
           </svg> -->
@@ -270,13 +265,13 @@
       <nav class="py-2">
         <ul class="nav text-center d-flex justify-content-center gap-5">
           <li class="nav-item">
-            <a class="nav-link link-light active" aria-current="page" href="index.html">
+            <a class="nav-link link-light active" aria-current="page" href="#">
               <i class="bi bi-house-door-fill fs-1"></i>
               <p>Home</p></a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link link-light link-opacity-50" href="./search.html">
+            <a class="nav-link link-light link-opacity-50" href="">
               <i class="bi bi-search fs-1"></i>
               <p>Cerca</p></a
             >
@@ -297,7 +292,7 @@
     </footer>
     <!-- FOOTER MOBILE VERSION END -->
     <!-- FOOTER DESKTOP VERSION START-->
-    <footer class="position-fixed bottom-0 start-0 w-100 bg-dark d-none d-lg-block py-3">
+    <footer class="fixed-bottom bg-dark d-none d-lg-block py-3">
       <div class="container-fluid">
         <div class="row align-items-center">
           <div class="col col-3 d-flex align-items-center gap-3">
@@ -308,7 +303,10 @@
               height="50em"
             />
             <div class="text-nowrap overflow-hidden flex-grow-1">
-              <p class="my-0"><small id="playing-track-title-desktop" class="text-light fw-semibold">Ninnananna per genitori disattenti</small></p>
+              <p id="test" class="my-0">
+                <span class="playing-track-title-desktop text-light fw-semibold">Ninnananna per genitori disattenti</span>
+                <span class="ms-5 text-light fw-semibold playing-track-title-desktop2">Ninnananna per genitori disattenti</span>
+              </p>
               <p class="my-0"><small id="playing-track-artist">Pinguini Tattici Nucleari</small></p>
             </div>
             <i class="bi bi-heart opacity-50 px-3"></i>
@@ -321,8 +319,7 @@
                 <p class="fw-bolder mb-0 position-absolute top-50">·</p>
               </div>
               <i class="bi bi-skip-start-fill fs-4"></i>
-              <!-- cambio per play -->
-              <i id="play-btn-desktop" class="bi bi-play-circle-fill fs-2 text-white mx-1"></i>
+              <button class="bg-transparent border-0 playerMusic"><i class="bi bi-play-circle-fill fs-2 text-white mx-1 playerI"></i></button>
               <i class="bi bi-skip-end-fill fs-4"></i>
               <div class="spotify-green d-flex flex-column align-items-center position-relative">
                 <i class="bi bi-repeat"></i>
@@ -330,46 +327,33 @@
               </div>
             </div>
             <div class="d-flex align-items-center gap-2">
-              <small class="opacity-50">0:58</small>
-              <div
-                class="progress flex-grow-1"
-                role="progressbar"
-                aria-label="Example 2px high"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                style="height: 0.3em"
-              >
-                <div class="progress-bar bg-white" style="width: 50%"></div>
+              <small class="opacity-50 secondiPassati">0:00</small>
+
+              <div class="progress flex-grow-1 position-relative" style="height: 0.3em">
+                <div id="bar" class="progress-bar bg-success" style="width: 0%"></div>
+
+                <input type="range" id="progressInput" class="position-absolute top-0 start-0 w-100 h-100 p-0 m-0" min="0" value="0" step="0.1" />
               </div>
-              <small class="opacity-50">3:20</small>
+
+              <small class="opacity-50 secondiTotali">0:30</small>
             </div>
           </div>
-          <div class="col col-2 d-flex align-items-center gap-2 offset-1 pe-3">
+          <div class="col col-2 d-flex align-items-center gap-2 offset-1">
             <i class="bi bi-mic opacity-50"></i>
             <i class="bi bi-list fs-5 opacity-50"></i>
             <i class="bi bi-speaker opacity-50"></i>
             <div class="flex-grow-1 d-flex align-items-center">
               <i class="bi bi-volume-down fs-2 opacity-50"></i>
-              <div
-                class="progress flex-grow-1"
-                role="progressbar"
-                aria-label="Example 2px high"
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                style="height: 0.3em"
-              >
-                <div class="progress-bar bg-white" style="width: 50%"></div>
+              <div class="progress flex-grow-1 position-relative" style="height: 0.3em">
+                <div id="bar" class="progress-bar bg-success" style="width: 0%"></div>
+
+                <input type="range" id="volumeInput" class="position-absolute top-0 start-0 w-100 h-100 p-0 m-0" min="0" value="0" step="0.1" />
               </div>
             </div>
 
             <i class="bi bi-arrows-angle-expand opacity-50"></i>
           </div>
         </div>
-
-        <div></div>
-        <div></div>
       </div>
     </footer>
     <!-- FOOTER DESKTOP VERSION END-->
